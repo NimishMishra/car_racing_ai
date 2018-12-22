@@ -24,7 +24,7 @@ def capture_screenshot():
 def screen_record(): 
     while True:
         screen =  capture_screenshot()
-        cv2.imshow('window', cv2.cvtColor(np.array(screen), cv2.COLOR_BGR2RGB))
+        cv2.imshow('game', cv2.cvtColor(np.array(screen), cv2.COLOR_BGR2RGB))
         if(cv2.waitKey(25) & 0xFF == ord('q')):
             cv2.destroyAllWindows()
             break      
