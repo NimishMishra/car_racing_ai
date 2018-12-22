@@ -12,3 +12,6 @@ Scripts:
 
 1. ScreenReading.py - to capture the screen in real-time that can be 
                       used for training purposes
+
+2. EdgeDetection.py - uses Canny edge detection algorithm to detect
+                      edges in the captured screen 

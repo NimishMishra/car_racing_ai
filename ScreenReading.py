@@ -4,6 +4,7 @@ from PIL import ImageGrab, Image
 import cv2
 import time
 from mss import mss
+from EdgeDetection import detect_edges
 
 # capture_screenshot() applies the mss functions which I found to be faster than ImageGrab.grab() on my machine.
 # The current FPS from mss is ~ 24 FPS. Grab the package from: https://github.com/BoboTiG/python-mss
@@ -12,7 +13,7 @@ def capture_screenshot():
 
     with mss() as sct:
         
-        monitor = {"top": 50, "left": 10, "width": 800, "height": 640}
+        monitor = {"top": 50, "left": 0, "width": 800, "height": 600}
         output = "sct-{top}x{left}_{width}x{height}.png".format(**monitor)
         sct_img = sct.grab(monitor)
 
@@ -24,9 +25,12 @@ def capture_screenshot():
 def screen_record(): 
     while True:
         screen =  capture_screenshot()
-        cv2.imshow('game', cv2.cvtColor(np.array(screen), cv2.COLOR_BGR2RGB))
+        processed_screen = detect_edges(screen)
+        cv2.imshow('game', processed_screen)
+        #cv2.imshow('game', cv2.cvtColor(np.array(screen), cv2.COLOR_BGR2RGB))
         if(cv2.waitKey(25) & 0xFF == ord('q')):
             cv2.destroyAllWindows()
-            break      
+            break  
+        
 
 screen_record()
