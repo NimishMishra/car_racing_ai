@@ -7,7 +7,7 @@ Special packages used:
 1. OpenCV
 2. mss (https://github.com/BoboTiG/python-mss)
 3. Python Imaging Library
-4. Quartz
+4. Quartz (pip install pyobjc-framework-Quartz)
 
 Scripts:
 
