@@ -14,4 +14,6 @@ Scripts:
                       used for training purposes
 
 2. EdgeDetection.py - uses Canny edge detection algorithm to detect
-                      edges in the captured screen 
+                      edges in the captured screen  
+
+3. InputController.py -  script to automate keyboard inputs to the game
