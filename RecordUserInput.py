@@ -1,4 +1,5 @@
-
+# Mac OS needs special permissions to access the keyboard inputs. Use sudo to
+# run any script that calls the key_check() function defined here
 
 from pynput import keyboard
 import threading
