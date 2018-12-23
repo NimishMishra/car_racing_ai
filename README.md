@@ -22,3 +22,5 @@ Scripts:
 4. RegionOfInterestDetection.py - Detects the region to be processed based on the path vertices described
 
 5. constants.py - Defines the constants to be used elsewhere
+
+6. LineDetection.py - detects and draws lines on edges
