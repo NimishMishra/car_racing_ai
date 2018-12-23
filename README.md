@@ -24,3 +24,12 @@ Scripts:
 5. constants.py - Defines the constants to be used elsewhere
 
 6. LineDetection.py - detects and draws lines on edges
+
+7. GameControlAI.py - a simple algorithm to move the car about
+
+However, the above logic is quite simple. We shall not be able to train on complex games.
+Better to use a neural network instead.
+
+1. RecordUserInput.py - a file that records the user input
+
+2. NNTrainingData.py - a script to train the data for a neural network
