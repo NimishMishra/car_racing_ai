@@ -73,6 +73,7 @@ def drawLines(img, lines, color=[0, 255, 255], thickness=3):
 
         top_lanes = sorted(line_counter.items(), key=lambda item: item[1])[::-1][:2]
 
+        # The following stores the slopes of the lanes. We'll return them to enable the model to learn better
         lane1_id = top_lanes[0][0]
         lane2_id = top_lanes[1][0]
 
@@ -91,7 +92,7 @@ def drawLines(img, lines, color=[0, 255, 255], thickness=3):
         l1_x1, l1_y1, l1_x2, l1_y2 = average_lane(final_lanes[lane1_id])
         l2_x1, l2_y1, l2_x2, l2_y2 = average_lane(final_lanes[lane2_id])
 
-        return [l1_x1, l1_y1, l1_x2, l1_y2], [l2_x1, l2_y1, l2_x2, l2_y2]
+        return [l1_x1, l1_y1, l1_x2, l1_y2], [l2_x1, l2_y1, l2_x2, l2_y2], lane1_id, lane2_id
     except Exception as e:
         print(str(e))
 
@@ -103,7 +104,9 @@ def detect_lines(original_image, processed_image):
     
     lines = cv2.HoughLinesP(processed_image, 1, np.pi/180, 180, np.array([]), minLineLength, maxLineGap)
     try:
-        l1, l2 = drawLines( original_image,lines)
+        slope1 = 0
+        slope2 = 0 # Defaults when nothing much is found
+        l1, l2, slope1, slope2 = drawLines( original_image,lines)
         cv2.line(original_image, (l1[0], l1[1]), (l1[2], l1[3]), [0,255,0], 30)
         cv2.line(original_image, (l2[0], l2[1]), (l2[2], l2[3]), [0,255,0], 30)
     except Exception as e:
@@ -121,4 +124,4 @@ def detect_lines(original_image, processed_image):
     except Exception as e:
         pass
 
-    return processed_image,original_image
+    return processed_image,original_image, slope1, slope2

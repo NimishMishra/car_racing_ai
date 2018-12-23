@@ -21,11 +21,7 @@ from Quartz.CoreGraphics import kCGHIDEventTap
 # From http://stackoverflow.com/questions/281133/controlling-the-mouse-from-python-in-os-x
 # and from https://developer.apple.com/library/mac/documentation/Carbon/Reference/QuartzEventServicesRef/index.html#//apple_ref/c/func/CGEventCreateKeyboardEvent
 
-W = 0x0D
-A = 0x00
-S = 0x01
-D = 0x02
-R = 0x0F
+
 def KeyDown(k):
     keyCode, shiftKey = toKeyCode(k)
 

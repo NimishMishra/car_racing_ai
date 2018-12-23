@@ -20,3 +20,10 @@ path_vertices = np.array([[0, 600],
 # Parameters that control which lines are drawn in the ROI processed image. You may need to tweak them until you get good edge detection
 minLineLength = 350
 maxLineGap = 10
+
+
+# The controls to be used in the game
+W = 0x0D
+A = 0x00
+S = 0x01
+D = 0x02

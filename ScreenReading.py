@@ -5,18 +5,18 @@ import cv2
 import time
 from mss import mss
 from EdgeDetection import detect_edges
-from InputController import PressKey, ReleaseKey, W, KeyDown, R, A, S, D
 from constants import path_vertices
 from RegionOfInterestDetection import Detect_roi
 from LineDetection import detect_lines
+from GameControlAI import decide_movement
 
 def process_screen(screen):
         original_screen = screen
         processed_screen = detect_edges(screen)
         gaussain_processed = cv2.GaussianBlur(processed_screen, (5,5), 0)
         roi_processed = Detect_roi(gaussain_processed, [path_vertices])
-        processed, original = detect_lines(original_screen, roi_processed)
-        return processed, original
+        processed, original, slope1, slope2 = detect_lines(original_screen, roi_processed)
+        return processed, original, slope1, slope2
 
 # capture_screenshot() applies the mss functions which I found to be faster than ImageGrab.grab() on my machine.
 # The current FPS from mss is ~ 24 FPS. Grab the package from: https://github.com/BoboTiG/python-mss
@@ -41,9 +41,10 @@ def screen_record():
         start = time.time()
         screen =  capture_screenshot()
         screen = np.array(screen) # Quite an important line. This was causing the whole logic to fall off.
-        new_screen, original_screen = process_screen(screen)
-        cv2.imshow('game', np.array(new_screen))
-        cv2.imshow('game2', cv2.cvtColor(np.array(original_screen), cv2.COLOR_BGR2RGB))
+        new_screen, original_screen, slope1, slope2 = process_screen(screen)
+        #cv2.imshow('game', np.array(new_screen))
+        #cv2.imshow('game2', cv2.cvtColor(np.array(original_screen), cv2.COLOR_BGR2RGB))
+        decide_movement(slope1, slope2)
         end = time.time()
         print(end - start)
         if(cv2.waitKey(25) & 0xFF == ord('q')):
