@@ -5,9 +5,14 @@ import cv2
 import time
 from mss import mss
 from EdgeDetection import detect_edges
+from InputController import PressKey, ReleaseKey, W, KeyDown, R, A, S, D
+from constants import path_vertices
+from RegionOfInterestDetection import Detect_roi
 
 # capture_screenshot() applies the mss functions which I found to be faster than ImageGrab.grab() on my machine.
 # The current FPS from mss is ~ 24 FPS. Grab the package from: https://github.com/BoboTiG/python-mss
+
+
 
 def capture_screenshot():
 
@@ -26,7 +31,8 @@ def screen_record():
     while True:
         screen =  capture_screenshot()
         processed_screen = detect_edges(screen)
-        cv2.imshow('game', processed_screen)
+        roi_processed = Detect_roi(processed_screen, [path_vertices])
+        cv2.imshow('game', roi_processed)
         #cv2.imshow('game', cv2.cvtColor(np.array(screen), cv2.COLOR_BGR2RGB))
         if(cv2.waitKey(25) & 0xFF == ord('q')):
             cv2.destroyAllWindows()
