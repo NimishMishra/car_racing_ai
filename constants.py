@@ -15,3 +15,8 @@ path_vertices = np.array([[0, 600],
             [200 , 352],
             [0, 600]
             ])
+
+
+# Parameters that control which lines are drawn in the ROI processed image. You may need to tweak them until you get good edge detection
+minLineLength = 400
+maxLineGap = 15

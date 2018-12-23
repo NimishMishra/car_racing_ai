@@ -1,5 +1,6 @@
 import numpy as np
 import cv2
+from constants import maxLineGap, minLineLength
 
 # drawLines() aids to draw the lines depicted by the coordinates stored in the 
 # array of arrays- lines.
@@ -18,7 +19,6 @@ def drawLines(image, lines):
 # Implementing Hough Transform. Find more imformation about Progressive Probabilistic
 # Hough Transform in the OpenCV documentation
 def detect_lines(image):
-    minLineLength = 30
-    maxLineGap = 15
-    lines = cv2.HoughLinesP(image, 1, np.pi/180, 180, minLineLength, maxLineGap)
+    
+    lines = cv2.HoughLinesP(image, 1, np.pi/180, 180, np.array([]), minLineLength, maxLineGap)
     drawLines( image,lines)
