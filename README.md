@@ -18,3 +18,7 @@ Scripts:
                       edges in the captured screen  
 
 3. InputController.py -  script to automate keyboard inputs to the game
+
+4. RegionOfInterestDetection.py - Detects the region to be processed based on the path vertices described
+
+5. constants.py - Defines the constants to be used elsewhere
