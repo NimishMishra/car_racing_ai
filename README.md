@@ -33,3 +33,11 @@ Better to use a neural network instead.
 1. RecordUserInput.py - a file that records the user input
 
 2. NNTrainingData.py - a script to train the data for a neural network
+
+3. BalanceData.py - script to remove most of 'forwards' so that the network doesn't overfit
+
+4. tensorflow_alexnet.py - Tensorflow's implementation of a nice neural network
+
+5. train_model. py - script to enable training of the model
+
+6. Test_model.py - script to enable testing of the model
