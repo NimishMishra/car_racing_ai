@@ -1,5 +1,7 @@
 # car_racing_ai
 
+[I am quite satisfied with the results. However, this model still needs a good deal of training data. I think applying RL to this scenario would be more interesting. This repo shall be reopened once I learn to apply RL on simple cases.]
+
 This repo is about training a car to win a racing video game.
 
 Special packages used:
